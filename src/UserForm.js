@@ -15,9 +15,10 @@ export default function UserForm({ onUserAdd }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>
+        <label htmlFor="name">
           Name:
           <input
+            id="name"
             type="text"
             name="name"
             value={name}
@@ -26,9 +27,10 @@ export default function UserForm({ onUserAdd }) {
         </label>
       </div>
       <div>
-        <label>
+        <label htmlFor="email">
           Email:
           <input
+            id="email"
             type="email"
             name="email"
             value={email}
