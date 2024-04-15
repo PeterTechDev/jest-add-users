@@ -1,5 +1,4 @@
 import { render, screen, within } from "@testing-library/react";
-import user from "@testing-library/user-event";
 import UserList from "./UserList";
 
 test("render one row for each user", () => {
@@ -10,6 +9,8 @@ test("render one row for each user", () => {
 
   render(<UserList users={users} />);
   const rows = within(screen.getByTestId("users")).getAllByRole("row");
+
+  expect(rows).toHaveLength(users.length);
 });
 
 test("render the name and email of each user", () => {});
