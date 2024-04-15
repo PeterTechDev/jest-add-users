@@ -13,4 +13,16 @@ test("render one row for each user", () => {
   expect(rows).toHaveLength(users.length);
 });
 
-test("render the name and email of each user", () => {});
+test("render the name and email of each user", () => {
+  const users = [
+    { name: "John Doe", email: "john@hotmail.com" },
+    { name: "Jane Doe", email: "jane@hotmail.com" },
+  ];
+
+  render(<UserList users={users} />);
+
+  users.forEach((user) => {
+    expect(screen.getByText(user.name)).toBeInTheDocument();
+    expect(screen.getByText(user.email)).toBeInTheDocument();
+  });
+});
