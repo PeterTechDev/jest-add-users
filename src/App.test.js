@@ -13,4 +13,10 @@ test("can receive a new user and display it on a list", async () => {
   user.type(emailInput, "lebron@goat.com");
 
   await user.click(button);
+
+  const name = screen.getByText("LeBron James");
+  const email = screen.getByText("lebron@goat.com");
+
+  expect(name).toBeInTheDocument();
+  expect(email).toBeInTheDocument();
 });
