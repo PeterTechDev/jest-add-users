@@ -1,8 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import user from "@testing-library/user-event";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("can receive a new user and display it on a list", async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+  const nameInput = screen.getByLabelText(/name/i);
+  const emailInput = screen.getByLabelText(/email/i);
+  const button = screen.getByRole("button");
+
+  user.type(nameInput, "LeBron James");
+  user.type(emailInput, "lebron@goat.com");
+
+  await user.click(button);
 });
