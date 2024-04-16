@@ -37,3 +37,18 @@ test("it calls onUserAdd when the form is submitted", () => {
     email: "john@hotmail.com",
   });
 });
+
+test("it clears the inputs after the form is submitted", async () => {
+  render(<UserForm onUserAdd={() => {}} />);
+
+  const nameInput = screen.getByLabelText(/name/i);
+  const emailInput = screen.getByLabelText(/email/i);
+  const button = screen.getByRole("button");
+
+  user.type(nameInput, "Kyrie Irving");
+  user.type(emailInput, "uncledrew@hotmail.com");
+  await user.click(button);
+
+  expect(nameInput).toHaveValue("");
+  expect(emailInput).toHaveValue("");
+});
